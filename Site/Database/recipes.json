@@ -1,0 +1,43 @@
+[
+  {
+    "_id": "1",
+    "recipeTitle": "Example Recipe 1",
+    "datePosted": "2001-01-01T05:00:00.000+00:00",
+    "instructions": "Example instructions",
+    "ingredients": [
+      { "ingredient": "i1", "measure": "m1" },
+      { "ingredient": "i2", "measure": "m2" },
+      { "ingredient": "i3", "measure": "m3" }
+    ]
+  },
+  {
+    "_id": "2",
+    "recipeTitle": "Example Recipe 2",
+    "datePosted": "2001-01-01T05:00:00.000+00:00",
+    "ingredients": [
+      { "ingredient": "i1", "measure": "m1" },
+      { "ingredient": "i2", "measure": "m2" },
+      { "ingredient": "i3", "measure": "m3" }
+    ]
+  },
+  {
+    "_id": "3",
+    "recipeTitle": "Example Recipe 3",
+    "datePosted": "2001-01-01T05:00:00.000+00:00",
+    "ingredients": [
+      { "ingredient": "i1", "measure": "m1" },
+      { "ingredient": "i2", "measure": "m2" },
+      { "ingredient": "i3", "measure": "m3" }
+    ]
+  },
+  {
+    "_id": "4",
+    "recipeTitle": "Example Recipe 4",
+    "datePosted": "2001-01-01T05:00:00.000+00:00",
+    "ingredients": [
+      { "ingredient": "i1", "measure": "m1" },
+      { "ingredient": "i2", "measure": "m2" },
+      { "ingredient": "i3", "measure": "m3" }
+    ]
+  }
+]
