@@ -5,6 +5,9 @@ import db from "./Site/Database/index.js";
 import UserRoutes from "./Site/Users/routes.js";
 import cors from "cors";
 import mongoose from "mongoose";
+import C from "./routes.js";
+import RecipesRoutes from "./Site/Recipes/routes.js";
+import ReviewRoutes from "./Site/Reviews/routes.js";
 
 const CONNECTION_STRING =
   process.env.DATABASE_CONNECTION_STRING ||
@@ -32,5 +35,7 @@ if (process.env.SERVER_ENV !== "development") {
 }
 app.use(session(sessionOptions));
 app.use(express.json());
-UserRoutes(app, db);
+UserRoutes(app);
+RecipesRoutes(app);
+ReviewRoutes(app);
 app.listen(process.env.PORT || 4000);
