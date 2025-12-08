@@ -21,7 +21,14 @@ export default function RecipesRoutes(app) {
     const recipes = await usersDao.getFollowingRecipes(following);
     res.json(recipes);
   };
+  const createRecipe = async (req, res) => {
+    const recipe = req.body;
+    console.log("RECIPE: " + JSON.stringify(recipe));
+    const status = await usersDao.createRecipe(recipe);
+    res.json(status);
+  };
 
-  app.get("/api/recipes", getAllUserRecipes); // Add query params for id/title
+  app.get("/api/recipes", getAllUserRecipes); // Optionally put id/title in req.query
   app.get("/api/recipes/following/:userId", getFollowingRecipes);
+  app.put("/api/recipes", createRecipe); // Put recipe in req.body
 }

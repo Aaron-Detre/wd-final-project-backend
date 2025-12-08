@@ -90,16 +90,13 @@ export default function UserRoutes(app) {
     res.json(reviewed);
   };
   const follow = async (req, res) => {
-    console.log("HERE");
     const { following, followee } = req.params;
     const status = await usersDao.follow(following, followee);
     res.json(status);
   };
   const unfollow = async (req, res) => {
-    console.log("HERE1");
     const { unfollowing, unfollowee } = req.params;
     const status = await usersDao.unfollow(unfollowing, unfollowee);
-    console.log("STATUS: " + JSON.stringify(status));
     res.json(status);
   };
 

@@ -15,7 +15,6 @@ export default function ReviewRoutes(app) {
   const getAllReviewsForLocalRecipe = async (req, res) => {
     const { recipeId } = req.params;
     const reviews = await usersDao.getAllReviewsForLocalRecipe(recipeId);
-    console.log(JSON.stringify(reviews));
     res.json(reviews);
   };
   const getFollowingReviews = async (req, res) => {
@@ -30,10 +29,16 @@ export default function ReviewRoutes(app) {
     const review = await usersDao.getReviewById(reviewId);
     res.json(review);
   };
+  const createReview = async (req, res) => {
+    const review = req.body;
+    const status = await usersDao.createReview(review);
+    res.json(status);
+  };
 
   app.get("/api/reviews", getAllReviews);
   app.get("/api/reviews/api/:recipeId", getAllReviewsForApiRecipe);
   app.get("/api/reviews/local/:recipeId", getAllReviewsForLocalRecipe);
   app.get("/api/reviews/following/:userId", getFollowingReviews);
   app.get("/api/reviews/:reviewId", getReviewById);
+  app.put("/api/reviews", createReview); // Put review in req.body
 }

@@ -178,7 +178,6 @@ export default function UsersDao() {
     };
   };
   const follow = async (following, followee) => {
-    console.log("HERE2");
     const followingUser = await model.findById(following);
     followingUser.following.push(followee);
     return model.updateOne(
@@ -195,6 +194,20 @@ export default function UsersDao() {
       { _id: unfollowing },
       { $set: { following: updatedFollowing } }
     );
+  };
+  const createRecipe = async (recipe) => {
+    const userId = recipe.recipeAuthor._id;
+    const user = await model.findById(userId);
+    const recipes = user.authored ?? [];
+    recipes.push(recipe);
+    return model.updateOne({ _id: userId }, { $set: { authored: recipes } });
+  };
+  const createReview = async (review) => {
+    const userId = review.reviewAuthor._id;
+    const user = await model.findById(userId);
+    const reviews = user.reviews ?? [];
+    reviews.push(review);
+    return model.updateOne({ _id: userId }, { $set: { reviews: reviews } });
   };
 
   return {
@@ -225,6 +238,8 @@ export default function UsersDao() {
     updateUser,
     follow,
     unfollow,
+    createRecipe,
+    createReview,
 
     // D
     deleteUser,
