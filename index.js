@@ -1,13 +1,13 @@
 import "dotenv/config";
 import session from "express-session";
 import express from "express";
-import db from "./Site/Database/index.js";
 import UserRoutes from "./Site/Users/routes.js";
 import cors from "cors";
 import mongoose from "mongoose";
-import C from "./routes.js";
 import RecipesRoutes from "./Site/Recipes/routes.js";
 import ReviewRoutes from "./Site/Reviews/routes.js";
+
+console.log("DB STRING:", process.env.DATABASE_CONNECTION_STRING);
 
 const CONNECTION_STRING =
   process.env.DATABASE_CONNECTION_STRING ||
