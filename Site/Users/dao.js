@@ -14,11 +14,9 @@ export default function UsersDao() {
   const updateUser = (userId, user) =>
     model.updateOne({ _id: userId }, { $set: user });
   const deleteUser = (userId) => model.deleteOne({ _id: userId });
-  const getUsersByPartialUsername = (partialName) => {
+  const getUsersByPartialName = (partialName) => {
     const regex = new RegExp(partialName, "i"); // 'i' makes it case-insensitive
-    return model.find({
-      $or: [{ firstName: { $regex: regex } }, { lastName: { $regex: regex } }],
-    });
+    return model.find({ username: { $regex: regex } }, { _id: 1, username: 1 });
   };
   const getUsersByRole = (role) => model.find({ role: role });
 
@@ -228,7 +226,7 @@ export default function UsersDao() {
     getUserByUsername,
     getUserByCredentials,
     getUsersByRole,
-    getUsersByPartialUsername,
+    getUsersByPartialName,
     getUserFollowing,
     getUserFollowers,
     getUserAuthoredRecipes,

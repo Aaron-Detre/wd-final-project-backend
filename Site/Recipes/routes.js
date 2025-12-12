@@ -23,7 +23,6 @@ export default function RecipesRoutes(app) {
   };
   const createRecipe = async (req, res) => {
     const recipe = req.body;
-    console.log("RECIPE: " + JSON.stringify(recipe));
     const status = await usersDao.createRecipe(recipe);
     res.json(status);
   };

@@ -7,8 +7,6 @@ import mongoose from "mongoose";
 import RecipesRoutes from "./Site/Recipes/routes.js";
 import ReviewRoutes from "./Site/Reviews/routes.js";
 
-console.log("DB STRING:", process.env.DATABASE_CONNECTION_STRING);
-
 const CONNECTION_STRING =
   process.env.DATABASE_CONNECTION_STRING ||
   "mongodb://172.17.176.1:27017/recipes";
