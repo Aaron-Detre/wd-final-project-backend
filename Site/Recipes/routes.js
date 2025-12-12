@@ -26,8 +26,16 @@ export default function RecipesRoutes(app) {
     const status = await usersDao.createRecipe(recipe);
     res.json(status);
   };
+  const deleteRecipe = async (req, res) => {
+    const { recipeId } = req.params;
+    const status = await usersDao.deleteRecipe(recipeId);
+    res.json(status);
+  };
 
   app.get("/api/recipes", getAllUserRecipes); // Optionally put id/title in req.query
   app.get("/api/recipes/following/:userId", getFollowingRecipes);
+
+  // Using put instead of create/delete because recipes are stored within users
   app.put("/api/recipes", createRecipe); // Put recipe in req.body
+  app.put("/api/recipes/:recipeId", deleteRecipe);
 }

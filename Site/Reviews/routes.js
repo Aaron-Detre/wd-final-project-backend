@@ -34,11 +34,19 @@ export default function ReviewRoutes(app) {
     const status = await usersDao.createReview(review);
     res.json(status);
   };
+  const deleteReview = async (req, res) => {
+    const { reviewId } = req.params;
+    const status = await usersDao.deleteReview(reviewId);
+    res.json(status);
+  };
 
   app.get("/api/reviews", getAllReviews);
   app.get("/api/reviews/api/:recipeId", getAllReviewsForApiRecipe);
   app.get("/api/reviews/local/:recipeId", getAllReviewsForLocalRecipe);
   app.get("/api/reviews/following/:userId", getFollowingReviews);
   app.get("/api/reviews/:reviewId", getReviewById);
+
+  // Using put instead of create/delete because reviews are stored within users
   app.put("/api/reviews", createReview); // Put review in req.body
+  app.put("/api/reviews/:reviewId", deleteReview);
 }

@@ -215,6 +215,21 @@ export default function UsersDao() {
     reviews.push(review);
     return model.updateOne({ _id: userId }, { $set: { reviews: reviews } });
   };
+  const deleteRecipe = async (recipeId) => {
+    // updateMany because not sure who authored the recipe, but there should be only one with that id
+    console.log("HERE");
+    return model.updateMany(
+      { "authored._id": recipeId },
+      { $pull: { authored: { _id: recipeId } } }
+    );
+  };
+  const deleteReview = async (reviewId) => {
+    // updateMany because not sure who wrote the review, but there should be only one with that id
+    return model.updateMany(
+      { "reviews._id": reviewId },
+      { $pull: { reviews: { _id: reviewId } } }
+    );
+  };
 
   return {
     // C
@@ -247,6 +262,8 @@ export default function UsersDao() {
     unfollow,
     createRecipe,
     createReview,
+    deleteRecipe,
+    deleteReview,
 
     // D
     deleteUser,
