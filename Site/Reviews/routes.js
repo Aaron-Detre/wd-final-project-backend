@@ -21,6 +21,7 @@ export default function ReviewRoutes(app) {
     const { userId } = req.params;
     const user = await usersDao.getUserById(userId);
     const following = user.following;
+    following.push(userId);
     const reviews = await usersDao.getFollowingReviews(following);
     res.json(reviews);
   };

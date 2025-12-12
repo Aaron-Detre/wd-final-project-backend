@@ -18,6 +18,7 @@ export default function RecipesRoutes(app) {
     const { userId } = req.params;
     const user = await usersDao.getUserById(userId);
     const following = user.following;
+    following.push(userId);
     const recipes = await usersDao.getFollowingRecipes(following);
     res.json(recipes);
   };
