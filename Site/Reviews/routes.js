@@ -47,6 +47,6 @@ export default function ReviewRoutes(app) {
   app.get("/api/reviews/:reviewId", getReviewById);
 
   // Using put instead of create/delete because reviews are stored within users
-  app.put("/api/reviews", createReview); // Put review in req.body
-  app.put("/api/reviews/:reviewId", deleteReview);
+  app.put("/api/reviews/create", createReview); // Put review in req.body
+  app.put("/api/reviews/delete/:reviewId", deleteReview);
 }

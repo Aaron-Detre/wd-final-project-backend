@@ -36,6 +36,6 @@ export default function RecipesRoutes(app) {
   app.get("/api/recipes/following/:userId", getFollowingRecipes);
 
   // Using put instead of create/delete because recipes are stored within users
-  app.put("/api/recipes", createRecipe); // Put recipe in req.body
-  app.put("/api/recipes/:recipeId", deleteRecipe);
+  app.put("/api/recipes/create", createRecipe); // Put recipe in req.body
+  app.put("/api/recipes/delete/:recipeId", deleteRecipe);
 }
