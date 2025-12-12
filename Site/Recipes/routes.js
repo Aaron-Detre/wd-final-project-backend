@@ -8,7 +8,7 @@ export default function RecipesRoutes(app) {
     if (id) {
       recipes = await usersDao.getRecipeById(id);
     } else if (title) {
-      recipes = await usersDao.getRecipeByTitle(title); //TODO
+      recipes = await usersDao.getRecipesByTitle(title); //TODO
     } else {
       recipes = await usersDao.getAllRecipes();
     }

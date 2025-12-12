@@ -161,6 +161,14 @@ export default function UsersDao() {
       },
     };
   };
+  const getRecipesByTitle = async (title) => {
+    const recipes = await getAllRecipes();
+    const recipesMatchingTitle = recipes.filter((recipe) =>
+      recipe.recipeTitle.toLowerCase().includes(title.toLowerCase())
+    );
+    return recipesMatchingTitle;
+  };
+
   const getReviewById = async (reviewId) => {
     const userWithTargetReview = await model.findOne(
       {
@@ -232,6 +240,7 @@ export default function UsersDao() {
     getFollowingReviews,
     getFollowingRecipes,
     getRecipeById,
+    getRecipesByTitle,
     getReviewById,
 
     // U
