@@ -6,10 +6,9 @@ const recipeSchema = new mongoose.Schema(
     datePosted: { type: Date, required: true },
     img: String,
     instructions: [String],
-    ingredients: {
-      type: [{ ingredient: String, measure: String }],
-      required: true,
-    },
+    ingredients: [{ ingredient: String, measure: String }],
+    scalableIngredients: [{ ingredient: String, amount: Number, unit: String }],
+    scalable: Boolean,
   },
   { collection: "recipes" }
 );
